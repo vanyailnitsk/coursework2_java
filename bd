@@ -1,0 +1,29 @@
+CREATE TABLE clients (
+    client_id SERIAL PRIMARY KEY ,
+    name VARCHAR(50) NOT NULL,
+    contact VARCHAR(50) NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+CREATE TABLE appointments(
+	appointment_id SERIAL PRIMARY KEY,
+	visit_date TIMESTAMP NOT NULL,
+	client_id INTEGER NOT NULL,
+	problem VARCHAR(70) NOT NULL
+);
+CREATE TABLE services(
+	service_id SERIAL PRIMARY KEY,
+	client_id INTEGER NOT NULL,
+	description VARCHAR(100) NOT NULL,
+	status VARCHAR(30) NOT NULL
+);
+CREATE TABLE admin(
+	login VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL
+);
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(50) NOT NULL,
+    price INTEGER NOT NULL
+);
