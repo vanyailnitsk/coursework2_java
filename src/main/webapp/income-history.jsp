@@ -26,18 +26,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${incomes}" var="income">
+                <c:forEach items="${products}" var="product">
                     <tr>
-                        <td>${income.dateFormatted}</td>
-                        <td>${income.amount}</td>
-                        <td>${income.source}</td>
-                        <td>${income.service}</td>
+                        <td>${product.dateFormatted}</td>
+                        <td>${product.amount}</td>
+                        <td>${product.source}</td>
+                        <td>${product.service}</td>
                         <td>
                             <button class="edit-button"
-                                    onclick="openEditIncomeModal(${income.id},${income.amount},'${income.source}')"
+                                    onclick="openEditIncomeModal(${product.id},${product.amount},'${product.source}')"
                             >Изменить
                             </button>
-                            <button class="delete-button" type="submit" onclick="deleteIncome(${income.id})">Удалить
+                            <button class="delete-button" type="submit" onclick="deleteIncome(${product.id})">Удалить
                             </button>
                         </td>
                     </tr>
@@ -75,7 +75,7 @@
             <span class="close" onclick="closeEditIncomeModal()">&times;</span>
             <h2>Редактировать запись о доходе</h2>
             <form id="editIncomeForm">
-                <input type="hidden" id="edit-income-id" name="user_id" required>
+                <input type="hidden" id="edit-product-id" name="user_id" required>
                 <label for="amount">Сумма:</label>
                 <input type="number" id="edit-amount" name="amount" required value="">
 
@@ -94,6 +94,6 @@
             </form>
         </div>
     </div>
-    <script src="/scripts/income.js"></script>
+    <script src="/scripts/product.js"></script>
 </body>
 </html>

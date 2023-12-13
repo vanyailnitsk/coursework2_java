@@ -1,8 +1,8 @@
 package com.example.kursovaya.servlets;
 
-import com.example.kursovaya.model.Income;
+import com.example.kursovaya.model.Product;
 import com.example.kursovaya.service.IncomeCategoryRepository;
-import com.example.kursovaya.service.IncomeRepository;
+import com.example.kursovaya.service.ProductService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -17,18 +17,18 @@ import java.util.stream.Collectors;
 
 @WebServlet("/income")
 public class IncomeServlet extends HttpServlet {
-    private final IncomeRepository incomeRepository;
+    private final ProductService productService;
     private final IncomeCategoryRepository incomeCategoryRepository;
 
     public IncomeServlet() {
-        this.incomeRepository = new IncomeRepository();
+        this.productService = new ProductService();
         this.incomeCategoryRepository = new IncomeCategoryRepository();
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        List<Income> incomes = incomeRepository.getIncomesByUserId(userId);
-        req.setAttribute("incomes",incomes);
+        List<Product> products = productService.getIncomesByUserId(userId);
+        req.setAttribute("incomes", products);
         req.setAttribute("userId",userId);
         req.setAttribute("income_categories",incomeCategoryRepository.getAllCategories());
         req.getRequestDispatcher("/income-history.jsp").forward(req,resp);
@@ -36,14 +36,14 @@ public class IncomeServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        Income income =  new Gson().fromJson(requestBody, Income.class);
-        if (incomeRepository.addIncome(income)) {
+        Product product =  new Gson().fromJson(requestBody, Product.class);
+        if (productService.addIncome(product)) {
             resp.getWriter().println("Success");
         }
         else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             JsonObject error = new JsonObject();
-            error.addProperty("message","No user with id "+income.getUserId());
+            error.addProperty("message","No user with id "+ product.getUserId());
             resp.setContentType("application/json");
             resp.getWriter().write(error.toString());
         }
@@ -51,21 +51,21 @@ public class IncomeServlet extends HttpServlet {
 
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int incomeId = Integer.parseInt(req.getParameter("id"));
-        if (!incomeRepository.deleteIncome(incomeId)) {
+        if (!productService.deleteIncome(incomeId)) {
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        Income income =  new Gson().fromJson(requestBody, Income.class);
-        if (incomeRepository.editIncome(income)) {
+        Product product =  new Gson().fromJson(requestBody, Product.class);
+        if (productService.editIncome(product)) {
             resp.getWriter().println("Success");
         }
         else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             JsonObject error = new JsonObject();
-            error.addProperty("message","No income with id "+income.getId());
+            error.addProperty("message","No product with id "+ product.getId());
             resp.setContentType("application/json");
             resp.getWriter().write(error.toString());
         }
