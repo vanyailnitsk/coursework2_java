@@ -1,6 +1,6 @@
-package com.example.kursovaya.servlets;
+package com.example.bredneva_3.servlets;
 
-import com.example.kursovaya.service.LoginService;
+import com.example.bredneva_3.service.LoginService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

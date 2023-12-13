@@ -1,7 +1,7 @@
-package com.example.kursovaya.servlets;
+package com.example.bredneva_3.servlets;
 
-import com.example.kursovaya.model.Service;
-import com.example.kursovaya.service.IncomeCategoryRepository;
+import com.example.bredneva_3.model.Service;
+import com.example.bredneva_3.service.IncomeCategoryRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

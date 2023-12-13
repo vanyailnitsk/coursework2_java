@@ -1,4 +1,4 @@
-package com.example.kursovaya.model;
+package com.example.bredneva_3.model;
 
 public class Service {
     private int service_id;

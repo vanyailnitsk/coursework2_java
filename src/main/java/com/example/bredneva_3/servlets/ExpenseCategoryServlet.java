@@ -1,7 +1,7 @@
-package com.example.kursovaya.servlets;
+package com.example.bredneva_3.servlets;
 
-import com.example.kursovaya.model.Service;
-import com.example.kursovaya.service.ServiceRepository;
+import com.example.bredneva_3.model.Service;
+import com.example.bredneva_3.service.ServiceRepository;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 

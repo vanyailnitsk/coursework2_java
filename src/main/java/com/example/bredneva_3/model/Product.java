@@ -1,7 +1,4 @@
-package com.example.kursovaya.model;
-
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+package com.example.bredneva_3.model;
 
 public class Product {
     private int productId;

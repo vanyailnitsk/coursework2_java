@@ -1,6 +1,6 @@
-package com.example.kursovaya.service;
+package com.example.bredneva_3.service;
 
-import com.example.kursovaya.model.Service;
+import com.example.bredneva_3.model.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

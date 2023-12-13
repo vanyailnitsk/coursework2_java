@@ -1,6 +1,6 @@
-package com.example.kursovaya.service;
+package com.example.bredneva_3.service;
 
-import com.example.kursovaya.model.User;
+import com.example.bredneva_3.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

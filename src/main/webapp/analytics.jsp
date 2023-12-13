@@ -1,7 +1,7 @@
 <%@ page import="com.google.gson.Gson" %>
-<%@ page import="com.example.kursovaya.model.Service" %>
+<%@ page import="com.example.bredneva_3.model.Service" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.example.kursovaya.model.Service" %>
+<%@ page import="com.example.bredneva_3.model.Service" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <html>
