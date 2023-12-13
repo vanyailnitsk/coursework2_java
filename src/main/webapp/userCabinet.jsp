@@ -12,7 +12,7 @@
 <body>
     <jsp:include page="main.html"/>
     <div class="content">
-        <h1>Добрый день, ${user.name}!</h1>
+        <h1>Добрый день, ${client.name}!</h1>
         <div class="categories-container">
             <c:forEach items="${expense_categories}" var="category_map">
                 <div class="service-card"
@@ -41,7 +41,7 @@
             <span class="close" onclick="closeCreateExpenseModal()">&times;</span>
             <h2 id="modalTitle">Новая покупка в категории </h2>
             <form id="createExpenseForm">
-                <input type="hidden" id="user_id" name="user_id" required value="${user.id}">
+                <input type="hidden" id="user_id" name="user_id" required value="${client.id}">
                 <label for="amount">Сумма:</label>
                 <input type="number" id="amount" name="amount" required>
 
@@ -59,7 +59,7 @@
             <span class="close" onclick="closeEditExpenseModal()">&times;</span>
             <h2>Редактировать запись о покупке</h2>
             <form id="editExpenseForm">
-                <input type="hidden" id="edit-user-id" name="user_id" required value="${user.id}">
+                <input type="hidden" id="edit-client-id" name="user_id" required value="${client.id}">
                 <input type="hidden" id="edit-appointment-id" name="user_id" required>
                 <label for="amount">Сумма:</label>
                 <input type="number" id="edit-amount" name="amount" required value="">

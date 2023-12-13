@@ -1,14 +1,16 @@
 package com.example.bredneva_3.model;
 
-public class User {
+public class Client {
     private int id;
     private String name;
+    private String contact;
     private String login;
     private String password;
 
-    public User(int id, String name, String login,String password) {
+    public Client(int id, String name, String contact, String login, String password) {
         this.id = id;
         this.name = name;
+        this.contact = contact;
         this.login = login;
         this.password = password;
     }
@@ -27,6 +29,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getLogin() {

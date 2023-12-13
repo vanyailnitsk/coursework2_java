@@ -6,22 +6,22 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class LoginService {
-    private final UserRepository userRepository;
+    private final ClientService clientService;
 
     public LoginService() {
-        this.userRepository = new UserRepository();
+        this.clientService = new ClientService();
     }
 
     public int auth(String login, String password) {
         String hashedPassword = hashPassword(password);
-        return userRepository.getUserIdByUsernameAndPassword(login,hashedPassword);
+        return clientService.getUserIdByUsernameAndPassword(login,hashedPassword);
     }
     public int register(String name,String login,String password) {
-        if (userRepository.isUserExistsByLogin(login)) {
+        if (clientService.isClientExistsByLogin(login)) {
             return -1;
         }
         String hashedPassword = hashPassword(password);
-        return userRepository.createUser(name,login,hashedPassword);
+        return clientService.registerClient(name,login,hashedPassword);
     }
     public String hashPassword(String password) {
         MessageDigest digest = null;

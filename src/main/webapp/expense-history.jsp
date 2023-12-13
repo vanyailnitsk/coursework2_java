@@ -50,7 +50,7 @@
             <span class="close" onclick="closeCreateExpenseModal()">&times;</span>
             <h2>Добавить запись о покупке</h2>
             <form id="createExpenseForm">
-                <input type="hidden" id="user_id" name="user_id" required value="${user.id}">
+                <input type="hidden" id="user_id" name="user_id" required value="${client.id}">
                 <label for="amount">Сумма:</label>
                 <input type="number" id="amount" name="amount" required>
 
