@@ -19,7 +19,7 @@ public class ServiceRepository {
     public ServiceRepository() {
         this.dataBaseService = new DataBaseService();
     }
-    public List<Service> getAllService() {
+    public List<Service> getAllServices() {
         List<Service> services = new ArrayList<>();
         try {
             ResultSet resultSet = dataBaseService.select(SELECT_ALL);

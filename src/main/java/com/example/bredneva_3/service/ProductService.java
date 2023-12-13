@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ProductService {
     private final DataBaseService dataBaseService;
-    static final String SELECT_ALL = "SELECT * FROM products;";
+    static final String SELECT_ALL = "SELECT * FROM products";
     static final String INSERT = "INSERT INTO products(name,description,price) values (?,?,?)";
     static final String DELETE = "DELETE FROM products where id=?";
     static final String UPDATE = "UPDATE products SET name=?,description=?,price=? where id=?";

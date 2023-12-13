@@ -27,9 +27,10 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
+        String contact = req.getParameter("contact");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        int userId = loginService.register(name,login,password);
+        int userId = loginService.register(name,contact,login,password);
         if (userId != -1) {
             req.getSession().setAttribute("user_id", userId);
             resp.sendRedirect( "/dashboard");

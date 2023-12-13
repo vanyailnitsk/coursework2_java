@@ -23,7 +23,7 @@ public class ExpenseCategoryServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Service> categories = serviceRepository.getAllCategories();
+        List<Service> categories = serviceRepository.getAllServices();
         req.setAttribute("categories",categories);
         req.getRequestDispatcher("/categories.jsp").forward(req,resp);
     }
@@ -31,7 +31,7 @@ public class ExpenseCategoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Service service = new Gson().fromJson(requestBody, Service.class);
-        if (serviceRepository.addCategory(service)) {
+        if (serviceRepository.addService(service)) {
             resp.getWriter().println("Success");
         }
         else {
@@ -56,7 +56,6 @@ public class ExpenseCategoryServlet extends HttpServlet {
         else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             JsonObject error = new JsonObject();
-            error.addProperty("message","No expense with id "+ service.getId());
             resp.setContentType("application/json");
             resp.getWriter().write(error.toString());
         }

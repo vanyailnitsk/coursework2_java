@@ -25,10 +25,10 @@ public class AnalyticsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        Map<Service,Integer> expenseMap = appointmentService.getUserExpensesByCategories(userId);
-        Map<Service,Integer> incomeMap = productService.getUserIncomesByCategories(userId);
-        req.setAttribute("expense_categories",expenseMap);
-        req.setAttribute("income_categories",incomeMap);
-        req.getRequestDispatcher("/analytics.jsp").forward(req,resp);
+//        Map<Service,Integer> expenseMap = appointmentService.getUserExpensesByCategories(userId);
+//        Map<Service,Integer> incomeMap = productService.getUserIncomesByCategories(userId);
+//        req.setAttribute("expense_categories",expenseMap);
+//        req.setAttribute("income_categories",incomeMap);
+//        req.getRequestDispatcher("/analytics.jsp").forward(req,resp);
     }
 }

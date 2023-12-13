@@ -22,11 +22,11 @@ public class UserServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        Client client = clientService.getUserById(userId);
-        List<Appointment> expens = appointmentService.getExpensesByUserId(userId);
-        req.setAttribute("expense_categories", appointmentService.getUserExpensesByCategories(userId));
+        Client client = clientService.getClientById(userId);
+        List<Appointment> appointments = appointmentService.getAppointmentsByClientId(userId);
+        req.setAttribute("expense_categories", appointmentService.getAppointmentsByClientId(userId));
         req.setAttribute("user", client);
-        req.setAttribute("expenses", expens);
+        req.setAttribute("expenses", appointments);
         req.getRequestDispatcher("/userCabinet.jsp").forward(req, resp);
     }
 }

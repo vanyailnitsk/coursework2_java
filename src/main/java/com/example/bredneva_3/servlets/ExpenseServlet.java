@@ -27,22 +27,21 @@ public class ExpenseServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        List<Appointment> expens = appointmentService.getExpensesByUserId(userId);
+        List<Appointment> expens = appointmentService.getAppointmentsByClientId(userId);
         req.setAttribute("expenses", expens);
-        req.setAttribute("expense_categories", serviceRepository.getAllCategories());
+        req.setAttribute("expense_categories", serviceRepository.getAllServiceByClient(userId));
         req.getRequestDispatcher("/expense-history.jsp").forward(req,resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Appointment appointment =  new Gson().fromJson(requestBody, Appointment.class);
-        if (appointmentService.addExpense(appointment)) {
+        if (appointmentService.addAppointment(appointment)) {
             resp.getWriter().println("Success");
         }
         else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             JsonObject error = new JsonObject();
-            error.addProperty("message","No user with id "+ appointment.getUserId());
             resp.setContentType("application/json");
             resp.getWriter().write(error.toString());
         }
@@ -59,7 +58,7 @@ public class ExpenseServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Appointment appointment =  new Gson().fromJson(requestBody, Appointment.class);
-        if (appointmentService.editExpense(appointment)) {
+        if (appointmentService.editAppointment(appointment)) {
             resp.getWriter().println("Success");
         }
         else {

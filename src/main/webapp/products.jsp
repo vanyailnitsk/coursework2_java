@@ -18,28 +18,25 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Дата</th>
-                    <th>Сумма</th>
-                    <th>Источник</th>
-                    <th>Категория</th>
-                    <th>Действие</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${products}" var="product">
                     <tr>
-                        <td>${product.dateFormatted}</td>
-                        <td>${product.amount}</td>
-                        <td>${product.source}</td>
-                        <td>${product.service}</td>
-                        <td>
-                            <button class="edit-button"
-                                    onclick="openEditIncomeModal(${product.id},${product.amount},'${product.source}')"
-                            >Изменить
-                            </button>
-                            <button class="delete-button" type="submit" onclick="deleteIncome(${product.id})">Удалить
-                            </button>
-                        </td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+<%--                        <td>--%>
+<%--                            <button class="edit-button"--%>
+<%--                                    onclick="openEditIncomeModal(${product.id},${product.amount},'${product.source}')"--%>
+<%--                            >Изменить--%>
+<%--                            </button>--%>
+<%--                            <button class="delete-button" type="submit" onclick="deleteIncome(${product.id})">Удалить--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
                     </tr>
                 </c:forEach>
                 </tbody>

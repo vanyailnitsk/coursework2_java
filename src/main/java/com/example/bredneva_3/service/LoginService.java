@@ -16,12 +16,12 @@ public class LoginService {
         String hashedPassword = hashPassword(password);
         return clientService.getUserIdByUsernameAndPassword(login,hashedPassword);
     }
-    public int register(String name,String login,String password) {
+    public int register(String name,String contact,String login,String password) {
         if (clientService.isClientExistsByLogin(login)) {
             return -1;
         }
         String hashedPassword = hashPassword(password);
-        return clientService.registerClient(name,login,hashedPassword);
+        return clientService.registerClient(name,contact,login,hashedPassword);
     }
     public String hashPassword(String password) {
         MessageDigest digest = null;
