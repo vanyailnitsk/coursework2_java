@@ -4,6 +4,7 @@
     <title>Создать продукт</title>
 </head>
 <body>
+    <jsp:include page="main.html"/>
     <form action="/create-product" method="post">
         <label for="name">Имя:</label>
         <input type="text" id="name" name="name" maxlength="50" required>

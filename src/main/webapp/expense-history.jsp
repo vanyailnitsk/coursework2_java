@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>История расходов</title>
-    <link rel="stylesheet" href="/styles/finance-history.css">
+    <link rel="stylesheet" href="/styles/products.css">
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles/main.css">
