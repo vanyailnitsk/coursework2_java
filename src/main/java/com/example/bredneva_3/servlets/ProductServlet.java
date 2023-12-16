@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
         req.getRequestDispatcher("/products.jsp").forward(req,resp);
     }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Product product = new Gson().fromJson(requestBody, Product.class);
         if (productService.addProduct(product)) {
