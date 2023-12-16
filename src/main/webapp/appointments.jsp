@@ -7,25 +7,20 @@
 </head>
 <body>
     <jsp:include page="main.html"/>
-<table>
-<tr>
-    <th>Проблема</th>
-    <th>Дата</th>
-</tr>
-<c:forEach items="${appointments}" var="appointment">
-    <tr>
-    <td>${appointment.problem}</td>
-    <td>${appointment.dateFormatted}</td>
-    </tr>
-    </c:forEach>
-</table>
+    <h2>Ваши заявки</h2>
+    <table>
+        <tr>
+            <th>Проблема</th>
+            <th>Дата</th>
+        </tr>
+        <c:forEach items="${appointments}" var="appointment">
+            <tr>
+                <td>${appointment.problem}</td>
+                <td>${appointment.dateFormatted}</td>
+            </tr>
+        </c:forEach>
+    </table>
     <br>
-    <form action="/appointments" method="post">
-        <label for="problem">Проблема</label>
-        <input type="text" id="problem" name="problem" maxlength="50" required>
-        <br>
-        <button type="submit">Создать</button>
-    </form>
 </body>
 </html>
 

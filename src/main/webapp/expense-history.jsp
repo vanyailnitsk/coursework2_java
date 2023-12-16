@@ -7,7 +7,7 @@
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/userCabinet.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
     <jsp:include page="main.html"/>

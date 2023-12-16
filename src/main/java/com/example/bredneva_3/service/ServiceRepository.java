@@ -28,7 +28,8 @@ public class ServiceRepository {
                         resultSet.getInt("service_id"),
                         resultSet.getInt("client_id"),
                         resultSet.getString("description"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getInt("amount")
                 );
                 services.add(service);
             }
@@ -49,7 +50,8 @@ public class ServiceRepository {
                         resultSet.getInt("service_id"),
                         resultSet.getInt("client_id"),
                         resultSet.getString("description"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getInt("amount")
                 );
                 services.add(service);
             }

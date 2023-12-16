@@ -5,12 +5,14 @@ public class Service {
     private int client_id;
     private String description;
     private String status;
+    private int amount;
 
-    public Service(int service_id, int client_id, String description, String status) {
+    public Service(int service_id, int client_id, String description, String status,int amount) {
         this.service_id = service_id;
         this.client_id = client_id;
         this.description = description;
         this.status = status;
+        this.amount = amount;
     }
 
     public int getService_id() {
@@ -43,5 +45,13 @@ public class Service {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

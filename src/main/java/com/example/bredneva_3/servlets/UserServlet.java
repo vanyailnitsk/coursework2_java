@@ -27,6 +27,6 @@ public class UserServlet extends HttpServlet {
         req.setAttribute("expense_categories", appointmentService.getAppointmentsByClientId(userId));
         req.setAttribute("user", client);
         req.setAttribute("expenses", appointments);
-        req.getRequestDispatcher("/userCabinet.jsp").forward(req, resp);
+        req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
     }
 }

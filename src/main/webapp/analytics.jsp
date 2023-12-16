@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Аналитика</title>
-    <link rel="stylesheet" href="/styles/userCabinet.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
     <link rel="stylesheet" href="/styles/navbar.css">
     <link rel="stylesheet" href="/styles/main.css">
     <style>

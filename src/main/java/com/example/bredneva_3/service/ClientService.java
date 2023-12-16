@@ -70,8 +70,11 @@ public class ClientService {
     }
 
     public Client getClientById(int id) {
+        Connection conn = dataBaseService.getConnect();
         try {
-            ResultSet resultSet = dataBaseService.select(SELECT_BY_ID+id);
+            PreparedStatement statement = conn.prepareStatement(SELECT_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new Client(
                         resultSet.getInt("client_id"),
