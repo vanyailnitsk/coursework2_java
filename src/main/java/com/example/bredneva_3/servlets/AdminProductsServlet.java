@@ -9,16 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/create-product")
-public class CreateProductServlet extends HttpServlet {
+@WebServlet("/products-manage")
+public class AdminProductsServlet extends HttpServlet {
     private final ProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/create_product.jsp").forward(req,resp);
+        List<Product> products = productService.getAllProducts();
+        req.setAttribute("products",products);
+        req.getRequestDispatcher("/product-manage.jsp").forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -27,6 +29,13 @@ public class CreateProductServlet extends HttpServlet {
         Product product = new Product(0,name, description,price);
         productService.addProduct(product);
         req.setAttribute("message", "Товар успешно создан!");
-        req.getRequestDispatcher("/create_product.jsp").forward(req,resp);
+        resp.sendRedirect("/products-manage");
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int productId = Integer.parseInt(req.getParameter("id"));
+        productService.deleteProduct(productId);
+        resp.sendRedirect("/products-manage");
     }
 }

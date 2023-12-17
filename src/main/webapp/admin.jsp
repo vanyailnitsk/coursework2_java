@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Панель администратора</title>
+    <link rel="stylesheet" href="/styles/products.css">
 </head>
 <body>
     <jsp:include page="admin-nav.html"/>
@@ -12,7 +13,6 @@
             <th>Контактные данные клиента</th>
             <th>Проблема</th>
             <th>Дата</th>
-            <th></th>
         </tr>
         <c:forEach items="${appointments}" var="appointment">
             <tr>
@@ -20,11 +20,6 @@
                 <td>${appointment.contact}</td>
                 <td>${appointment.problem}</td>
                 <td>${appointment.dateFormatted}</td>
-                <td>
-                    <form id="create-service" action="">
-                        <button type="button" onclick="submitDelete(${appointment.appointmentId})">Создать</button>
-                    </form>
-                </td>
             </tr>
         </c:forEach>
     </table>

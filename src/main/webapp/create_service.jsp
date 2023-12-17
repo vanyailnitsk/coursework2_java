@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Создать заказ</title>
+    <link rel="stylesheet" href="/styles/products.css">
 </head>
 <body>
     <jsp:include page="admin-nav.html"/>
