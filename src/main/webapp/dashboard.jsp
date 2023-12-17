@@ -11,6 +11,7 @@
     <jsp:include page="main.html"/>
     <div class="content">
         <h1>Добро пожаловать в личный кабинет, ${client.name}!</h1>
+        <h3 style="text-align: center">Ваш номер телефона: ${client.contact}</h3>
         <form action="/appointments" method="post">
             <label for="problem">Проблема</label>
             <input type="text" id="problem" name="problem" maxlength="50" required>

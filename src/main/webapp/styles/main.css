@@ -4,6 +4,9 @@ body {
 
 .navbar {
     background-color: #e36da7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
 }
 
