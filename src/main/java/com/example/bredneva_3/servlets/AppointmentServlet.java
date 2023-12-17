@@ -43,24 +43,10 @@ public class AppointmentServlet extends HttpServlet {
 
     }
 //
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
         int appointmentId = Integer.parseInt(req.getParameter("id"));
         if (!appointmentService.deleteAppointment(appointmentId)) {
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
-//
-//    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        Service service = new Gson().fromJson(requestBody, Service.class);
-//        if (serviceRepository.editCategory(service)) {
-//            resp.getWriter().println("Success");
-//        }
-//        else {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            JsonObject error = new JsonObject();
-//            resp.setContentType("application/json");
-//            resp.getWriter().write(error.toString());
-//        }
-//    }
 }

@@ -8,6 +8,7 @@ public class Appointment {
     private Timestamp visitDate;
     private int clientId;
     private String problem;
+    private String contact;
 
     public Appointment(int id, Timestamp visitDate, int clientId, String problem) {
         this.appointmentId = id;
@@ -50,6 +51,14 @@ public class Appointment {
 
     public String getDateFormatted() {
         return new SimpleDateFormat("dd.MM.yyyy HH:mm").format(visitDate);
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     @Override

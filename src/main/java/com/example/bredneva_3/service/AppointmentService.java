@@ -11,6 +11,8 @@ import java.util.*;
 public class AppointmentService {
     private final DataBaseService dataBaseService;
     static final String SELECT_BY_USERID = "SELECT * from appointments WHERE client_id = ? ORDER BY visit_date desc;";
+    static final String SELECT_ALL = "SELECT * from appointments" +
+            " JOIN clients on appointments.client_id=clients.client_id ORDER BY visit_date desc";
     static final String INSERT = "INSERT INTO appointments(visit_date,client_id,problem) values (NOW(),?,?);";
     static final String DELETE = "DELETE FROM appointments where appointment_id=?";
     static final String UPDATE = "UPDATE expense SET problem=? where appointment_id=?";
@@ -35,6 +37,25 @@ public class AppointmentService {
             }
         } catch (SQLException e) {
            e.printStackTrace();
+        }
+        return appointments;
+    }
+    public List<Appointment> getAllAppointments() {
+        List<Appointment> appointments = new ArrayList<>();
+        try {
+            ResultSet resultSet = dataBaseService.select(SELECT_ALL);
+            while (resultSet.next()) {
+                Appointment appointment = new Appointment(
+                        resultSet.getInt("appointment_id"),
+                        resultSet.getTimestamp("visit_date"),
+                        resultSet.getInt("client_id"),
+                        resultSet.getString("problem")
+                );
+                appointment.setContact(resultSet.getString("contact"));
+                appointments.add(appointment);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return appointments;
     }
