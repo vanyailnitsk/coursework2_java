@@ -3,8 +3,6 @@
 <html>
 <head>
     <title>Личный кабинет</title>
-    <link rel="icon" href="/img/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>

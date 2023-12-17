@@ -2,10 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>История расходов</title>
+    <title>Каталог</title>
     <link rel="stylesheet" href="/styles/products.css">
-    <link rel="icon" href="/img/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/dashboard.css">
 </head>

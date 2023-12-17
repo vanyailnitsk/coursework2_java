@@ -13,7 +13,8 @@
         <label for="description">Описание:</label>
         <input type="text" id="description" name="description" maxlength="50" required>
         <br>
-        <input type="hidden" value="Оформлен" id="status">
+        <label for="status">Статус:</label>
+        <input type="text" name="status" value="Оформлен" id="status" required>
         <br>
         <label for="amount">Сумма:</label>
         <input type="number" id="amount" name="amount" required>

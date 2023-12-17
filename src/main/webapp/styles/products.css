@@ -51,6 +51,7 @@ input, select {
 }
 
 button {
+    padding: 8px 12px;
     background-color: #007BFF;
     color: #fff;
     border: none;

@@ -11,9 +11,9 @@ import java.util.List;
 
 public class ServiceRepository {
     private final DataBaseService dataBaseService;
-    static final String SELECT_ALL = "SELECT * FROM services;";
+    static final String SELECT_ALL = "SELECT * FROM services order by service_id desc";
     static final String SELECT_BY_CLIENT = "SELECT * FROM services WHERE client_id=?";
-    static final String INSERT = "INSERT INTO services(client_id, description, status) values (?,?,?)";
+    static final String INSERT = "INSERT INTO services(client_id, description, status,amount) values (?,?,?,?)";
     static final String DELETE = "DELETE FROM services where service_id=?";
     static final String UPDATE = "UPDATE services SET description=?,status=? where service_id=?";
     public ServiceRepository() {
@@ -66,7 +66,8 @@ public class ServiceRepository {
             PreparedStatement statement = conn.prepareStatement(INSERT);
             statement.setInt(1,service.getClient_id());
             statement.setString(2,service.getDescription());
-            statement.setString(3,"Accept");
+            statement.setString(3,service.getStatus());
+            statement.setInt(4,service.getAmount());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

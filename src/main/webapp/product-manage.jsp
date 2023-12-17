@@ -8,7 +8,7 @@
 <body>
     <jsp:include page="admin-nav.html"/>
     <form action="/products-manage" method="post">
-        <label for="name">Имя:</label>
+        <label for="name">Название:</label>
         <input type="text" id="name" name="name" maxlength="50" required>
         <br>
         <label for="description">Описание</label>
