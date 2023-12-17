@@ -16,12 +16,12 @@ public class Appointment {
         this.problem = problem;
     }
 
-    public int getId() {
+    public int getAppointmentId() {
         return appointmentId;
     }
 
-    public void setId(int id) {
-        this.appointmentId = id;
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public Timestamp getVisitDate() {
@@ -52,4 +52,13 @@ public class Appointment {
         return new SimpleDateFormat("dd.MM.yyyy HH:mm").format(visitDate);
     }
 
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "appointmentId=" + appointmentId +
+                ", visitDate=" + visitDate +
+                ", clientId=" + clientId +
+                ", problem='" + problem + '\'' +
+                '}';
+    }
 }

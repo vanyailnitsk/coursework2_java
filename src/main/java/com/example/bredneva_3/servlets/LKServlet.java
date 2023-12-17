@@ -1,13 +1,9 @@
 package com.example.bredneva_3.servlets;
 
-import com.example.bredneva_3.model.Appointment;
 import com.example.bredneva_3.model.Client;
 import com.example.bredneva_3.model.Service;
 import com.example.bredneva_3.service.ClientService;
 import com.example.bredneva_3.service.ServiceRepository;
-import com.example.bredneva_3.service.AppointmentService;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @WebServlet("/lk")
-public class ServicesServlet extends HttpServlet {
+public class LKServlet extends HttpServlet {
     private final ServiceRepository serviceRepository = new ServiceRepository();
     private final ClientService clientService = new ClientService();
 
@@ -27,7 +22,6 @@ public class ServicesServlet extends HttpServlet {
 //        Integer userId = (Integer) req.getSession().getAttribute("user_id");
         int userId = 2;
         Client client = clientService.getClientById(userId);
-        System.out.println(client.getName());
         List<Service> services = serviceRepository.getAllServiceByClient(userId);
         req.setAttribute("services",services);
         req.setAttribute("client",client);

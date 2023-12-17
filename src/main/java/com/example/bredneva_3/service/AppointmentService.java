@@ -14,7 +14,6 @@ public class AppointmentService {
     static final String INSERT = "INSERT INTO appointments(visit_date,client_id,problem) values (NOW(),?,?);";
     static final String DELETE = "DELETE FROM appointments where appointment_id=?";
     static final String UPDATE = "UPDATE expense SET problem=? where appointment_id=?";
-
     public AppointmentService() {
         this.dataBaseService = new DataBaseService();
     }
@@ -27,7 +26,7 @@ public class AppointmentService {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Appointment appointment = new Appointment(
-                        clientId,
+                        resultSet.getInt("appointment_id"),
                         resultSet.getTimestamp("visit_date"),
                         resultSet.getInt("client_id"),
                         resultSet.getString("problem")
@@ -57,14 +56,14 @@ public class AppointmentService {
         try {
             PreparedStatement statement = conn.prepareStatement(UPDATE);
             statement.setString(1, appointment.getProblem());
-            statement.setInt(2, appointment.getId());
+            statement.setInt(2, appointment.getAppointmentId());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
-    public boolean deleteExpense(Integer id) {
+    public boolean deleteAppointment(Integer id) {
         Connection conn = dataBaseService.getConnect();
         try {
             PreparedStatement statement = conn.prepareStatement(DELETE);
