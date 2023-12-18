@@ -16,6 +16,7 @@
             <br>
             <button type="submit">Войти</button>
             <p>Чтобы зарегистрироваться, нажмите &nbsp;<a href="/register">cюда</a></p>
+            <p><a href="/admin-login">Войти как администратор</a></p>
         </form>
         <div class="error-message">${errorMessage}</div>
     </div>

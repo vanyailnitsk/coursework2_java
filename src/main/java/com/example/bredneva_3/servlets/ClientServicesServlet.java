@@ -17,7 +17,7 @@ public class ClientServicesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int clientId = 2;
+        int clientId = (Integer) req.getSession().getAttribute("user_id");
         List<Service> services = serviceRepository.getAllServiceByClient(clientId);
         req.setAttribute("services",services);
         req.getRequestDispatcher("/my_services.jsp").forward(req,resp);

@@ -28,7 +28,7 @@ public class ClientService {
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                userId = resultSet.getInt("id");
+                userId = resultSet.getInt("client_id");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

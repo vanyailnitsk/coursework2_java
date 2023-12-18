@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
         int userId = loginService.register(name,contact,login,password);
         if (userId != -1) {
             req.getSession().setAttribute("user_id", userId);
-            resp.sendRedirect( "/dashboard");
+            resp.sendRedirect( "/lk");
         } else {
             req.setAttribute("errorMessage", "Логин занят!");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);

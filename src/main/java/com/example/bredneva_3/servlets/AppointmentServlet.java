@@ -21,17 +21,19 @@ public class AppointmentServlet extends HttpServlet {
     private final AppointmentService appointmentService = new AppointmentService();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Appointment> appointments = appointmentService.getAppointmentsByClientId(2);
+        int clientId = (Integer) req.getSession().getAttribute("user_id");
+        List<Appointment> appointments = appointmentService.getAppointmentsByClientId(clientId);
         req.setAttribute("appointments",appointments);
         req.getRequestDispatcher("/appointments.jsp").forward(req,resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String problem = req.getParameter("problem");
-        int userId = 2;
-        Appointment appointment = new Appointment(0,null,userId,problem);
+//        int userId = 2;
+        int clientId = (Integer) req.getSession().getAttribute("user_id");
+        Appointment appointment = new Appointment(0,null,clientId,problem);
         if (appointmentService.addAppointment(appointment)) {
-            List<Appointment> appointments = appointmentService.getAppointmentsByClientId(2);
+            List<Appointment> appointments = appointmentService.getAppointmentsByClientId(clientId);
             req.setAttribute("appointments",appointments);
             req.setAttribute("message", "Обращение успешно отправлено!");
             resp.sendRedirect("/appointments");

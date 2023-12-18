@@ -11,6 +11,9 @@
             <label for="name">Имя:</label>
             <input type="text" id="name" name="name" maxlength="50" required>
             <br>
+            <label for="contact">Контактные данные:</label>
+            <input type="text" id="contact" name="contact" maxlength="50" required>
+            <br>
             <label for="login">Логин:</label>
             <input type="text" id="login" name="login" maxlength="50" required>
             <br>

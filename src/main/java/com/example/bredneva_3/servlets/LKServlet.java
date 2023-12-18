@@ -19,10 +19,9 @@ public class LKServlet extends HttpServlet {
     private final ClientService clientService = new ClientService();
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        int userId = 2;
-        Client client = clientService.getClientById(userId);
-        List<Service> services = serviceRepository.getAllServiceByClient(userId);
+        int clientId = (Integer) req.getSession().getAttribute("user_id");
+        Client client = clientService.getClientById(clientId);
+        List<Service> services = serviceRepository.getAllServiceByClient(clientId);
         req.setAttribute("services",services);
         req.setAttribute("client",client);
         req.getRequestDispatcher("/dashboard.jsp").forward(req,resp);
