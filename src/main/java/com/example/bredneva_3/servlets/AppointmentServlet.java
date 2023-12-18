@@ -29,7 +29,6 @@ public class AppointmentServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String problem = req.getParameter("problem");
-//        int userId = 2;
         int clientId = (Integer) req.getSession().getAttribute("user_id");
         Appointment appointment = new Appointment(0,null,clientId,problem);
         if (appointmentService.addAppointment(appointment)) {

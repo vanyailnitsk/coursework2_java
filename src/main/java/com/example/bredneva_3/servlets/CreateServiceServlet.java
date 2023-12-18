@@ -25,7 +25,6 @@ public class CreateServiceServlet extends HttpServlet {
         String description = req.getParameter("description");
         String status = req.getParameter("status");
         int amount = Integer.parseInt(req.getParameter("amount"));
-        System.out.println(clientId+" "+description+" "+status+" "+amount);
         Service service = new Service(0,clientId,description,status,amount);
         serviceRepository.addService(service);
         resp.sendRedirect("/services");

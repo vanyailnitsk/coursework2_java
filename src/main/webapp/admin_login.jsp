@@ -6,7 +6,7 @@
 </head>
 <body>
   <div class="login-container">
-    <h2>Авторизация</h2>
+    <h2>Вход в панель администратора</h2>
     <form action="/admin-login" method="post">
       <label for="login">Логин:</label>
       <input type="text" id="login" name="login" required>
