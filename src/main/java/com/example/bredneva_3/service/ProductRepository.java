@@ -8,14 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class ProductService {
+public class ProductRepository {
     private final DataBaseService dataBaseService;
     static final String SELECT_ALL = "SELECT * FROM products";
     static final String INSERT = "INSERT INTO products(name,description,price) values (?,?,?)";
     static final String DELETE = "DELETE FROM products where id=?";
     static final String UPDATE = "UPDATE products SET name=?,description=?,price=? where id=?";
 
-    public ProductService() {
+    public ProductRepository() {
         this.dataBaseService = new DataBaseService();
     }
     public List<Product> getAllProducts() {

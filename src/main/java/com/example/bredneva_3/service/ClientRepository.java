@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ClientService {
+public class ClientRepository {
     private final DataBaseService dataBaseService;
     static final String SELECT_BY_ID = "SELECT * FROM clients where client_id=?";
     private final String AUTH_CLIENT = "SELECT client_id FROM clients WHERE login = ? AND password = ?";
@@ -15,7 +15,7 @@ public class ClientService {
     private final String REGISTER = "INSERT INTO clients (name, contact,login, password)" +
             " VALUES (?,?,?,?) RETURNING client_id";
 
-    public ClientService() {
+    public ClientRepository() {
         this.dataBaseService = new DataBaseService();
     }
 

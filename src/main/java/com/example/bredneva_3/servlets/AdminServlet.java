@@ -1,7 +1,7 @@
 package com.example.bredneva_3.servlets;
 
 import com.example.bredneva_3.model.Appointment;
-import com.example.bredneva_3.service.AppointmentService;
+import com.example.bredneva_3.service.AppointmentRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +13,10 @@ import java.util.List;
 
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
-    private final AppointmentService appointmentService = new AppointmentService();
+    private final AppointmentRepository appointmentRepository = new AppointmentRepository();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Appointment> appointments = appointmentService.getAllAppointments();
+        List<Appointment> appointments = appointmentRepository.getAllAppointments();
         req.setAttribute("appointments",appointments);
         req.getRequestDispatcher("/admin.jsp").forward(req,resp);
     }

@@ -1,7 +1,7 @@
 package com.example.bredneva_3.servlets;
 
 import com.example.bredneva_3.model.Product;
-import com.example.bredneva_3.service.ProductService;
+import com.example.bredneva_3.service.ProductRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +13,11 @@ import java.util.List;
 
 @WebServlet("/products-manage")
 public class AdminProductsServlet extends HttpServlet {
-    private final ProductService productService = new ProductService();
+    private final ProductRepository productRepository = new ProductRepository();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productRepository.getAllProducts();
         req.setAttribute("products",products);
         req.getRequestDispatcher("/product-manage.jsp").forward(req,resp);
     }
@@ -27,7 +27,7 @@ public class AdminProductsServlet extends HttpServlet {
         String description = req.getParameter("description");
         int price = Integer.parseInt(req.getParameter("price"));
         Product product = new Product(0,name, description,price);
-        productService.addProduct(product);
+        productRepository.addProduct(product);
         req.setAttribute("message", "Товар успешно создан!");
         resp.sendRedirect("/products-manage");
     }
@@ -35,7 +35,7 @@ public class AdminProductsServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int productId = Integer.parseInt(req.getParameter("id"));
-        productService.deleteProduct(productId);
+        productRepository.deleteProduct(productId);
         resp.sendRedirect("/products-manage");
     }
 }

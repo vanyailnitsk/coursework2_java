@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdminService {
+public class AdminRepository {
     private final String AUTH_ADMIN = "SELECT * FROM admin WHERE login = ? AND password = ?";
     private final DataBaseService dataBaseService = new DataBaseService();
     public boolean checkAdminAuth(String login,String password) {

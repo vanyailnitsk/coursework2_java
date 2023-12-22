@@ -1,6 +1,6 @@
 package com.example.bredneva_3.servlets;
 
-import com.example.bredneva_3.service.AdminService;
+import com.example.bredneva_3.service.AdminRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet("/admin-login")
 public class AdminLoginServlet extends HttpServlet {
-    private final AdminService adminService = new AdminService();
+    private final AdminRepository adminRepository = new AdminRepository();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class AdminLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        if (adminService.checkAdminAuth(login,password)) {
+        if (adminRepository.checkAdminAuth(login,password)) {
             resp.sendRedirect( "/admin");
         } else {
             req.setAttribute("errorMessage", "Неправильный логин или пароль");

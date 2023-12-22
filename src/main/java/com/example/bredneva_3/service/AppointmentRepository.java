@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class AppointmentService {
+public class AppointmentRepository {
     private final DataBaseService dataBaseService;
     static final String SELECT_BY_USERID = "SELECT * from appointments WHERE client_id = ? ORDER BY visit_date desc;";
     static final String SELECT_ALL = "SELECT * from appointments" +
@@ -16,7 +16,7 @@ public class AppointmentService {
     static final String INSERT = "INSERT INTO appointments(visit_date,client_id,problem) values (NOW(),?,?);";
     static final String DELETE = "DELETE FROM appointments where appointment_id=?";
     static final String UPDATE = "UPDATE expense SET problem=? where appointment_id=?";
-    public AppointmentService() {
+    public AppointmentRepository() {
         this.dataBaseService = new DataBaseService();
     }
     public List<Appointment> getAppointmentsByClientId(Integer clientId) {

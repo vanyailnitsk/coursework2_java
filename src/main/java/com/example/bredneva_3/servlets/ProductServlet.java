@@ -1,7 +1,7 @@
 package com.example.bredneva_3.servlets;
 
 import com.example.bredneva_3.model.Product;
-import com.example.bredneva_3.service.ProductService;
+import com.example.bredneva_3.service.ProductRepository;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -16,15 +16,15 @@ import java.util.stream.Collectors;
 
 @WebServlet("/products")
 public class ProductServlet extends HttpServlet {
-    private final ProductService productService;
+    private final ProductRepository productRepository;
 
     public ProductServlet() {
-        this.productService = new ProductService();
+        this.productRepository = new ProductRepository();
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Integer userId = (Integer) req.getSession().getAttribute("user_id");
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productRepository.getAllProducts();
         req.setAttribute("products", products);
         req.getRequestDispatcher("/products.jsp").forward(req,resp);
     }
@@ -32,7 +32,7 @@ public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Product product = new Gson().fromJson(requestBody, Product.class);
-        if (productService.addProduct(product)) {
+        if (productRepository.addProduct(product)) {
             resp.getWriter().println("Success");
         }
         else {
@@ -45,7 +45,7 @@ public class ProductServlet extends HttpServlet {
 
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
         int productId = Integer.parseInt(req.getParameter("id"));
-        if (!productService.deleteProduct(productId)) {
+        if (!productRepository.deleteProduct(productId)) {
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
@@ -53,7 +53,7 @@ public class ProductServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         Product product = new Gson().fromJson(requestBody, Product.class);
-        if (productService.editProduct(product)) {
+        if (productRepository.editProduct(product)) {
             resp.getWriter().println("Success");
         }
         else {
