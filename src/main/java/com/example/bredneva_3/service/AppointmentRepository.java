@@ -15,7 +15,7 @@ public class AppointmentRepository {
             " JOIN clients on appointments.client_id=clients.client_id ORDER BY visit_date desc";
     static final String INSERT = "INSERT INTO appointments(visit_date,client_id,problem) values (NOW(),?,?);";
     static final String DELETE = "DELETE FROM appointments where appointment_id=?";
-    static final String UPDATE = "UPDATE expense SET problem=? where appointment_id=?";
+    static final String UPDATE = "UPDATE appointments SET problem=? where appointment_id=?";
     public AppointmentRepository() {
         this.dataBaseService = new DataBaseService();
     }

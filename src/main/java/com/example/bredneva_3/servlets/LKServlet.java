@@ -27,40 +27,4 @@ public class LKServlet extends HttpServlet {
         req.getRequestDispatcher("/dashboard.jsp").forward(req,resp);
     }
 
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//        String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        Appointment appointment =  new Gson().fromJson(requestBody, Appointment.class);
-//        if (appointmentService.addAppointment(appointment)) {
-//            resp.getWriter().println("Success");
-//        }
-//        else {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            JsonObject error = new JsonObject();
-//            resp.setContentType("application/json");
-//            resp.getWriter().write(error.toString());
-//        }
-//    }
-//
-//    protected void doDelete(HttpServletRequest req, HttpServletResponse resp)  {
-//        int expenseId = Integer.parseInt(req.getParameter("id"));
-//        if (!appointmentService.deleteExpense(expenseId)) {
-//            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-//        }
-//    }
-//
-//    @Override
-//    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//        String requestBody = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        Appointment appointment =  new Gson().fromJson(requestBody, Appointment.class);
-//        if (appointmentService.editAppointment(appointment)) {
-//            resp.getWriter().println("Success");
-//        }
-//        else {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            JsonObject error = new JsonObject();
-//            error.addProperty("message","No appointment with id "+ appointment.getId());
-//            resp.setContentType("application/json");
-//            resp.getWriter().write(error.toString());
-//        }
-//    }
 }

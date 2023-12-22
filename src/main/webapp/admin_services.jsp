@@ -15,8 +15,26 @@
                 <p> ID клиента <span>${service.client_id}</span></p>
                 <p><span>${service.amount} ₽</span></p>
                 <p> Статус: <span>${service.status}</span></p>
+                <p><a href="/update-service?serviceId=${service.service_id}">Обновить сервис</a></p>
+                <form id="delete">
+                    <button type="button" onclick="submitDelete(${service.service_id})">Удалить</button>
+                </form>
             </div>
         </c:forEach>
     </div>
+    <script>
+        function submitDelete(serviceId) {
+            event.preventDefault();
+            fetch('/services?id='+serviceId, {
+                method: 'DELETE',
+            })
+                .then(data => {
+                    location.reload()
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
 </body>
 </html>

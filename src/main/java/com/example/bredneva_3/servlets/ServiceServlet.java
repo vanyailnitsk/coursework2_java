@@ -21,4 +21,10 @@ public class ServiceServlet extends HttpServlet {
         req.setAttribute("services",services);
         req.getRequestDispatcher("/admin_services.jsp").forward(req,resp);
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int serviceId = Integer.parseInt(req.getParameter("id"));
+        serviceRepository.deleteService(serviceId);
+    }
 }
